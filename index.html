@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H.M. Shonal Nethsara - Quantum Web Architect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background: #000;
+            color: #0ff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(transparent 0%, rgba(0,255,255,0.2) 2%, transparent 3%),
+                linear-gradient(90deg, transparent 0%, rgba(0,255,255,0.2) 2%, transparent 3%);
+            background-size: 50px 50px;
+            z-index: -1;
+            animation: gridMove 20s linear infinite;
+        }
+        @keyframes gridMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 50px 50px; }
+        }
+        .glitch-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .glitch {
+            font-size: 4em;
+            font-weight: bold;
+            text-shadow: 0.05em 0 0 rgba(255,0,0,0.75),
+                        -0.025em -0.05em 0 rgba(0,255,0,0.75),
+                        0.025em 0.05em 0 rgba(0,0,255,0.75);
+            animation: glitch 500ms infinite;
+        }
+        @keyframes glitch {
+            0% {
+                text-shadow: 0.05em 0 0 rgba(255,0,0,0.75),
+                            -0.025em -0.05em 0 rgba(0,255,0,0.75),
+                            0.025em 0.05em 0 rgba(0,0,255,0.75);
+            }
+            14% {
+                text-shadow: 0.05em 0 0 rgba(255,0,0,0.75),
+                            -0.025em -0.05em 0 rgba(0,255,0,0.75),
+                            0.025em 0.05em 0 rgba(0,0,255,0.75);
+            }
+            15% {
+                text-shadow: -0.05em -0.025em 0 rgba(255,0,0,0.75),
+                            0.025em 0.025em 0 rgba(0,255,0,0.75),
+                            -0.05em -0.05em 0 rgba(0,0,255,0.75);
+            }
+            49% {
+                text-shadow: -0.05em -0.025em 0 rgba(255,0,0,0.75),
+                            0.025em 0.025em 0 rgba(0,255,0,0.75),
+                            -0.05em -0.05em 0 rgba(0,0,255,0.75);
+            }
+            50% {
+                text-shadow: 0.025em 0.05em 0 rgba(255,0,0,0.75),
+                            0.05em 0 0 rgba(0,255,0,0.75),
+                            0 -0.05em 0 rgba(0,0,255,0.75);
+            }
+            99% {
+                text-shadow: 0.025em 0.05em 0 rgba(255,0,0,0.75),
+                            0.05em 0 0 rgba(0,255,0,0.75),
+                            0 -0.05em 0 rgba(0,0,255,0.75);
+            }
+            100% {
+                text-shadow: -0.025em 0 0 rgba(255,0,0,0.75),
+                            -0.025em -0.025em 0 rgba(0,255,0,0.75),
+                            -0.025em -0.05em 0 rgba(0,0,255,0.75);
+            }
+        }
+        
+        .profile-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-bottom: 40px;
+        }
+        .profile-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 3px solid #0ff;
+            box-shadow: 0 0 20px #0ff, 0 0 40px #0ff, 0 0 60px #0ff;
+            animation: pulse 4s infinite alternate;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 20px #0ff, 0 0 40px #0ff, 0 0 60px #0ff; }
+            100% { box-shadow: 0 0 40px #0ff, 0 0 80px #0ff, 0 0 120px #0ff; }
+        }
+        .profile-text {
+            max-width: 50%;
+        }
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #0ff;
+        }
+        p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 5px #0ff;
+        }
+        .skill-bars {
+            margin-top: 40px;
+        }
+        .skill {
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .skill-name {
+            display: inline-block;
+            width: 150px;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .skill-bar {
+            height: 20px;
+            background: rgba(0,255,255,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        .skill-percentage {
+            height: 100%;
+            background: linear-gradient(90deg, #0ff, #00f);
+            box-shadow: 0 0 20px #0ff;
+            animation: fillBar 2s ease-out forwards;
+            transform-origin: left;
+            transform: scaleX(0);
+        }
+        @keyframes fillBar {
+            to { transform: scaleX(1); }
+        }
+        .skill-value {
+            position: absolute;
+            right: 10px;
+            top: 0;
+            font-size: 0.9em;
+            color: #fff;
+        }
+        .contact {
+            text-align: center;
+            margin-top: 60px;
+        }
+        .contact a {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #0ff, #00f);
+            color: #000;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact a:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(45deg);
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+        .contact a:hover:before {
+            left: 100%;
+        }
+        .contact a:hover {
+            box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
+            text-shadow: 0 0 5px #000;
+        }
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 0.9em;
+            color: rgba(0,255,255,0.7);
+        }
+        @media (max-width: 768px){
+            .profile-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #0ff;
+            box-shadow: 0 0 20px #0ff, 0 0 40px #0ff, 0 0 60px #0ff;
+            animation: pulse 4s infinite alternate;
+        }
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="cyber-grid"></div>
+    <div class="container">
+        <div class="glitch-wrapper">
+            <h1 class="glitch">H.M. Shonal Nethsara</h1>
+        </div>
+
+        <div class="profile-container">
+            <img src="gb.jpg" alt="H.M. Shonal Nethsara" class="profile-image">
+            <div class="profile-text">
+                <h2> Web Developer</h2>
+                <p>Pioneering the frontiers of digital reality, I craft immersive web experiences that transcend conventional dimensions. By harnessing quantum computing principles, I reshape the very fabric of the internet, ushering in a new era of hyper-connected digital ecosystems.</p>
+            </div>
+        </div>
+
+        <section class="skills">
+            <h2>My Skills</h2>
+            <div class="skill-bars">
+                <div class="skill">
+                    <span class="skill-name">HTML</span>
+                    <div class="skill-bar">
+                        <div class="skill-percentage" style="width: 98%;"></div>
+                    </div>
+                    <span class="skill-value">98%</span>
+                </div>
+                <div class="skill">
+                    <span class="skill-name">CSS</span>
+                    <div class="skill-bar">
+                        <div class="skill-percentage" style="width: 95%;"></div>
+                    </div>
+                    <span class="skill-value">95%</span>
+                </div>
+                <div class="skill">
+                    <span class="skill-name">Java Script</span>
+                    <div class="skill-bar">
+                        <div class="skill-percentage" style="width: 30%;"></div>
+                    </div>
+                    <span class="skill-value">30%</span>
+                </div>
+                <div class="skill">
+                    <span class="skill-name">Python</span>
+                    <div class="skill-bar">
+                        <div class="skill-percentage" style="width: 18%;"></div>
+                    </div>
+                    <span class="skill-value">22%</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact">
+            <h2>Start the connection</h2>
+            <p>Ready to push the boundaries of traditional web design?</p>
+            <a href="https://wa.me/94702444114">Let's make a deal</a>
+        </section>
+    </div>
+
+    <footer>
+        <p>Codename: GB | All tasks are conquered..! </p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const skills = document.querySelectorAll('.skill-percentage');
+            skills.forEach((skill) => {
+                skill.style.width = skill.style.width;
+            });
+        });
+    </script>
+</body>
+</html>
